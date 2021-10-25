@@ -25,6 +25,7 @@ contract QuoteRecorder {
     function reward() public view {
         require(msg.sender == owner);
         for (uint256 i = 0; i < recorders.length; i++) {
+            //supposing that distributeToken is implemented
             distributeToken(recorders[i], 10);
         }
     }
