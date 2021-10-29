@@ -11,12 +11,9 @@ contract EthCheck {
         owner = msg.sender;
     }
 
-    function withdraw(
-        uint256 _amount,
-        bytes memory _signature
-    ) public {
+    function withdraw(uint256 _amount, bytes memory _signature) public {
         bytes32 hash = keccak256(
-            abi.encodePacked(msg.sender, _amount, address(this))
+            abi.encodePacked(msg.sender, _amount)
         );
         bytes32 signedMsg = hash.toEthSignedMessageHash();
         require(owner == signedMsg.recover(_signature));
